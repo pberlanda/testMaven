@@ -135,7 +135,6 @@ public class Studente {
         
         if (this.dataDiNascita==null) {
             return false;
-            
         }
 
         if (("".equals(this.indirizzo)) || (this.indirizzo == null)) {
