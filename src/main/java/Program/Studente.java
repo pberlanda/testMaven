@@ -32,7 +32,9 @@ public class Studente {
         this.matricola = matricola;
         
         // non prendiamo attributi null
-        checkAttributes();
+        if (!(checkAttributes())) {
+            System.out.println("Controlla gli attributi");
+        }
     }
 
     // costruttore semplificato
@@ -45,7 +47,9 @@ public class Studente {
         this.cognome = cognome;
 
         // non prendiamo attributi null
-        checkAttributes();
+        if (!(checkAttributes())) {
+            System.out.println("Controlla gli attributi");
+        }
     }
 
     public String getNome() {
@@ -108,32 +112,41 @@ public class Studente {
     public String toString() {
         String str = "";
         
-        str += "nome: " + this.getNome();
+        str = "***";
+        str += "\nnome: " + this.getNome();
         str += "\n" + "cognome: " + this.getCognome();
         str += "\n" + "data di nascita: " + this.getStringDataDiNascita();
         str += "\n" + "indirizzo: " + this.getIndirizzo();
         str += "\n" + "matricola: " + this.getMatricola();
+        str += "\n***";
         
         return str;
     }
     
-    private void checkAttributes() {
+    private boolean checkAttributes() {
 
         if (("".equals(this.nome)) || (this.nome == null)) {
-            this.setNome("");
+            return false;
         }
         
         if (("".equals(this.cognome)) || (this.cognome == null)) {
-            this.setCognome("");
+            return false;
+        }
+        
+        if (this.dataDiNascita==null) {
+            return false;
+            
         }
 
         if (("".equals(this.indirizzo)) || (this.indirizzo == null)) {
-            this.setIndirizzo("");
+            return false;
         }
         
         if (("".equals(this.matricola)) || (this.matricola == null)) {
-            this.setMatricola("");
+            return false;
         }
+        
+        return true;
         
     }
 }   
